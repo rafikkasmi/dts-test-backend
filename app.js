@@ -98,39 +98,6 @@ app.post("/create-main-task", async (req, res, next) => {
     }
 });
 
-app.post("/create-task", async (req, res) => {
-    const { title, description, assignee, reporter, priority, type, project } = req.body;
-    const task = {
-        "fields": {
-            "project": {
-                "key": PROJECT_NAME
-            },
-            "summary": title,
-            "description": description,
-            "issuetype": {
-                "name": type
-            },
-            "priority": {
-                "name": priority
-            },
-            "assignee": {
-                "name": assignee
-            }
-        }
-    }
-    try {
-        const response = await jira.addNewIssue(task);
-
-
-
-        return res.send(response);
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ error: error.message });
-    }
-});
-
-
 
 app.listen(PORT, () => {
     console.log(`app listening at http://localhost:${PORT}`)
