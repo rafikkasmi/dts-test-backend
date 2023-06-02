@@ -28,8 +28,8 @@ const PROJECT_NAME = "TES"
 
 
 app.get('/', async (req, res) => {
-    const connection = await getRethinkDBConnection()
-    const results = await db.table('tasks').delete().run(connection);
+    // const connection = await getRethinkDBConnection()
+    // const results = await db.table('tasks').delete().run(connection);
     res.send('Hello to jira tasks api!')
 })
 
